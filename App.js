@@ -4,84 +4,6 @@ import { AntDesign, Feather, Ionicons, MaterialIcons } from '@expo/vector-icons'
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function App() {
-  const data = [
-    { icon: 'heart', text: 'Área Pix' },
-    { icon: 'attach-money', text: 'Pagar' },
-    { icon: 'cart-outline', text: 'Pegar emprestado' },
-    { icon: 'gift', text: 'Transferir' },
-    { icon: 'star', text: 'Depositar' },
-    { icon: 'heart', text: 'extrato' },
-    { icon: 'attach-money', text: 'Novas funçoes' },
-  ];
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <MaterialIcons name="person" size={24} color="white" style={styles.headerIcon} />
-        <View style={styles.otherIconsContainer}>
-          <Ionicons name="ios-help-circle-outline" size={24} color="white" style={styles.headerIcon} />
-          <Feather name="plus-circle" size={24} color="white" style={styles.headerIcon} />
-          <AntDesign name="eyeo" size={24} color="white" style={styles.headerIcon} />
-        </View>
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.greeting}>Olá, Elison</Text>
-      </View>
-      <View style={styles.whiteView}>
-        <View style={styles.infoContainer}>
-          <Text style={styles.infoText}>Conta</Text>
-          <Text style={styles.infoText}>R$ 3.156,94</Text>
-        </View>
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.circleContainer}>
-              <View style={styles.circle}>
-                <AntDesign name={item.icon} size={24} color="black" />
-              </View>
-              <Text style={styles.iconText}>{item.text}</Text>
-            </View>
-          )}
-          contentContainerStyle={styles.sliderContainer}
-          snapToInterval={windowWidth * 0.3 + 20} // Largura do item + margem
-          decelerationRate="fast"
-          getItemLayout={(data, index) => (
-            { length: windowWidth * 0.3 + 20, offset: (windowWidth * 0.3 + 20) * index, index }
-          )}
-        />
-      </View>
-      <View style={styles.emprestimoContainer}>
-        <View style={styles.emprestimoTextContainer}>
-          <Text style={styles.emprestimoTitle}>Empréstimo</Text>
-          <View style={styles.emprestimoLine}></View>
-          <Text style={styles.emprestimoSubtitle}>Valor disponível de até</Text>
-          <Text style={styles.emprestimoValue}>R$ 25.000,00</Text>
-        </View>
-        <View style={styles.emprestimoIcon}>
-          <AntDesign name="right" size={24} color="#000" />
-        </View>
-      </View>
-
-      <View style={styles.investimentosContainer}>
-        <View style={styles.investimentosTextContainer}>
-          <Text style={styles.investimentosTitle}>Investimentos</Text>
-          <View style={styles.investimentosLine}></View>
-          <Text style={styles.investimentosSubtitle}>O jeito Nu de investir:</Text>
-          <Text style={styles.investimentosSubsubtitle}>sem asteriscos, linguagem fácil</Text>
-          <Text style={styles.investimentosSubsubtitle}>e a partir de R$1. Saiba mais.</Text>
-        </View>
-        <View style={styles.investimentosIcon}>
-          <AntDesign name="right" size={24} color="#000" />
-        </View>
-      </View>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -149,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 14, 
   },
-  emprestimoContainer: {
+  sectionContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -159,66 +81,116 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#848389',
   },
-  emprestimoTextContainer: {
+  sectionTextContainer: {
     flex: 1,
   },
-  emprestimoTitle: {
+  sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#000',
   },
-  emprestimoLine: {
+  sectionLine: {
     backgroundColor: '#848389',
     height: 2,
     width: 0,
     marginBottom: 5,
   },
-  emprestimoSubtitle: {
+  sectionSubtitle: {
     fontSize: 14,
     color: '#848389',
   },
-  emprestimoValue: {
-    fontSize: 16,
-    color: '#000',
-  },
-  emprestimoIcon: {
-    marginLeft: 10,
-  },
-  investimentosContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: '#848389',
-  },
-  investimentosTextContainer: {
-    flex: 1,
-  },
-  investimentosTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-  },
-  investimentosLine: {
-    backgroundColor: '#848389',
-    height: 2,
-    width: 0,
-    marginBottom: 5,
-  },
-  investimentosSubtitle: {
-    fontSize: 14,
-    
-    color: '#848389',
-  },
-  investimentosSubsubtitle: {
-    fontSize: 14,
-    color: '#848389',
-    marginTop: 2,
-  },
-  investimentosIcon: {
+  sectionIcon: {
     marginLeft: 10,
   },
 });
+
+export default function App() {
+  const data = [
+    { icon: 'heart', text: 'Área Pix' },
+    { icon: 'attach-money', text: 'Pagar' },
+    { icon: 'cart-outline', text: 'Pegar emprestado' },
+    { icon: 'gift', text: 'Transferir' },
+    { icon: 'star', text: 'Depositar' },
+    { icon: 'heart', text: 'extrato' },
+    { icon: 'attach-money', text: 'Novas funçoes' },
+  ];
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <MaterialIcons name="person" size={24} color="white" style={styles.headerIcon} />
+        <View style={styles.otherIconsContainer}>
+          <Ionicons name="ios-help-circle-outline" size={24} color="white" style={styles.headerIcon} />
+          <Feather name="plus-circle" size={24} color="white" style={styles.headerIcon} />
+          <AntDesign name="eyeo" size={24} color="white" style={styles.headerIcon} />
+        </View>
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.greeting}>Olá, Elison</Text>
+      </View>
+      <View style={styles.whiteView}>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoText}>Conta</Text>
+          <Text style={styles.infoText}>R$ 3.156,94</Text>
+        </View>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={data}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View style={styles.circleContainer}>
+              <View style={styles.circle}>
+                <AntDesign name={item.icon} size={24} color="black" />
+              </View>
+              <Text style={styles.iconText}>{item.text}</Text>
+            </View>
+          )}
+          contentContainerStyle={styles.sliderContainer}
+          snapToInterval={windowWidth * 0.3 + 20} // Largura do item + margem
+          decelerationRate="fast"
+          getItemLayout={(data, index) => (
+            { length: windowWidth * 0.3 + 20, offset: (windowWidth * 0.3 + 20) * index, index }
+          )}
+        />
+      </View>
+      <View style={styles.sectionContainer}>
+        <View style={styles.sectionTextContainer}>
+          <Text style={styles.sectionTitle}>Empréstimo</Text>
+          <View style={styles.sectionLine}></View>
+          <Text style={styles.sectionSubtitle}>Valor disponível de até</Text>
+          <Text style={styles.sectionSubtitle}>R$ 25.000,00</Text>
+        </View>
+        <View style={styles.sectionIcon}>
+          <AntDesign name="right" size={24} color="#000" />
+        </View>
+      </View>
+
+      <View style={styles.sectionContainer}>
+        <View style={styles.sectionTextContainer}>
+          <Text style={styles.sectionTitle}>Investimentos</Text>
+          <View style={styles.sectionLine}></View>
+          <Text style={styles.sectionSubtitle}>O jeito Nu de investir:</Text>
+          <Text style={styles.sectionSubtitle}>sem asteriscos, linguagem fácil</Text>
+          <Text style={styles.sectionSubtitle}>e a partir de R$1. Saiba mais.</Text>
+        </View>
+        <View style={styles.sectionIcon}>
+          <AntDesign name="right" size={24} color="#000" />
+        </View>
+      </View>
+
+      <View style={styles.sectionContainer}>
+        <View style={styles.sectionTextContainer}>
+          <Text style={styles.sectionTitle}>Shopping</Text>
+          <View style={styles.sectionLine}></View>
+          <Text style={styles.sectionSubtitle}>
+            Vantagens exclusivas das nossas marcas preferidas
+          </Text>
+        </View>
+        <View style={styles.sectionIcon}>
+          <AntDesign name="right" size={24} color="#000" />
+        </View>
+      </View>
+    </View>
+  );
+}
