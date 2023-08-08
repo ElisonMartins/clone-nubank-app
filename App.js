@@ -102,6 +102,15 @@ const styles = StyleSheet.create({
   sectionIcon: {
     marginLeft: 10,
   },
+  extraContentContainer: {
+    backgroundColor: '#F0F1F5',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+  },
+  extraContentText: {
+    fontSize: 14,
+    color: '#000',
+  },
 });
 
 export default function App() {
@@ -113,6 +122,11 @@ export default function App() {
     { icon: 'star', text: 'Depositar' },
     { icon: 'heart', text: 'extrato' },
     { icon: 'attach-money', text: 'Novas funçoes' },
+  ];
+
+  const extraContent = [
+    'Você tem até R$ 12.500,00 disponíveis para empréstimo.',
+    'Salve seus amigos da burocracia. Faça um convite...',
   ];
 
   return (
@@ -151,6 +165,27 @@ export default function App() {
           decelerationRate="fast"
           getItemLayout={(data, index) => (
             { length: windowWidth * 0.3 + 20, offset: (windowWidth * 0.3 + 20) * index, index }
+          )}
+        />
+        <View style={styles.sectionContainer}>
+          <View style={styles.sectionTextContainer}>
+            <Text style={styles.sectionTitle}>Meus cartões</Text>
+          </View>
+          <View style={styles.sectionIcon}>
+            <AntDesign name="creditcard" size={24} color="#000" />
+          </View>
+        </View>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={extraContent}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <View style={[styles.sectionContainer, styles.extraContentContainer]}>
+              <View style={styles.sectionTextContainer}>
+                <Text style={[styles.sectionSubtitle, styles.extraContentText]}>{item}</Text>
+              </View>
+            </View>
           )}
         />
       </View>
