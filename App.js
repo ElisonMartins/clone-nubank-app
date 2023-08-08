@@ -13,7 +13,6 @@ export default function App() {
     { icon: 'star', text: 'Depositar' },
     { icon: 'heart', text: 'extrato' },
     { icon: 'attach-money', text: 'Novas funçoes' },
-    
   ];
 
   return (
@@ -55,9 +54,21 @@ export default function App() {
           )}
         />
       </View>
+      <View style={styles.emprestimoContainer}>
+        <View style={styles.emprestimoTextContainer}>
+          <Text style={styles.emprestimoTitle}>Empréstimo</Text>
+          <View style={styles.emprestimoLine}></View>
+          <Text style={styles.emprestimoSubtitle}>Valor disponível de até</Text>
+          <Text style={styles.emprestimoValue}>R$ 25.000,00</Text>
+        </View>
+        <View style={styles.emprestimoIcon}>
+          <AntDesign name="right" size={24} color="#000" />
+        </View>
+      </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -114,15 +125,51 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   circle: {
-    width: 70, // Tamanho maior
-    height: 70, // Tamanho maior
-    borderRadius: 40, // Metade do tamanho
+    width: 70, 
+    height: 70, 
+    borderRadius: 40, 
     backgroundColor: '#F0F1F5',
     justifyContent: 'center',
     alignItems: 'center',
   },
   iconText: {
     marginTop: 5,
-    fontSize: 14, // Tamanho maior
+    fontSize: 14, 
+  },
+  emprestimoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#848389',
+    marginBottom: 10, 
+  },
+  emprestimoTextContainer: {
+    flex: 1,
+  },
+  emprestimoTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  emprestimoLine: {
+    backgroundColor: '#848389',
+    height: 2,
+    width: 0,
+    marginBottom: 5,
+  },
+  emprestimoSubtitle: {
+    fontSize: 14,
+    color: '#848389',
+  },
+  emprestimoValue: {
+    fontSize: 16,
+    color: '#000',
+  },
+  emprestimoIcon: {
+    marginLeft: 10,
   },
 });
