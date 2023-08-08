@@ -65,6 +65,19 @@ export default function App() {
           <AntDesign name="right" size={24} color="#000" />
         </View>
       </View>
+
+      <View style={styles.investimentosContainer}>
+        <View style={styles.investimentosTextContainer}>
+          <Text style={styles.investimentosTitle}>Investimentos</Text>
+          <View style={styles.investimentosLine}></View>
+          <Text style={styles.investimentosSubtitle}>O jeito Nu de investir:</Text>
+          <Text style={styles.investimentosSubsubtitle}>sem asteriscos, linguagem fácil</Text>
+          <Text style={styles.investimentosSubsubtitle}>e a partir de R$1. Saiba mais.</Text>
+        </View>
+        <View style={styles.investimentosIcon}>
+          <AntDesign name="right" size={24} color="#000" />
+        </View>
+      </View>
     </View>
   );
 }
@@ -145,7 +158,6 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#848389',
-    marginBottom: 10, 
   },
   emprestimoTextContainer: {
     flex: 1,
@@ -170,6 +182,43 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   emprestimoIcon: {
+    marginLeft: 10,
+  },
+  investimentosContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#848389',
+  },
+  investimentosTextContainer: {
+    flex: 1,
+  },
+  investimentosTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  investimentosLine: {
+    backgroundColor: '#848389',
+    height: 2,
+    width: 0,
+    marginBottom: 5,
+  },
+  investimentosSubtitle: {
+    fontSize: 14,
+    
+    color: '#848389',
+  },
+  investimentosSubsubtitle: {
+    fontSize: 14,
+    color: '#848389',
+    marginTop: 2,
+  },
+  investimentosIcon: {
     marginLeft: 10,
   },
 });
