@@ -115,6 +115,8 @@ const styles = StyleSheet.create({
   },
 });
 
+
+
 export default function App() {
   const data = [
     { icon: <Pix />, text: 'Área Pix' },
@@ -205,6 +207,14 @@ export default function App() {
         </View>
       </View>
 
+      <View style={styles.sectionContainer}>
+        <View style={styles.sectionTextContainer}>
+          <Text style={styles.sectionTitle}>Seguros</Text>
+          <View style={styles.sectionLine}></View>
+          <Text style={styles.sectionSubtitle}>Proteção para você cuidar do que importa</Text>
+        </View>
+      </View>
+      
       <View style={styles.sectionContainer}>
         <View style={styles.sectionTextContainer}>
           <Text style={styles.sectionTitle}>Investimentos</Text>
