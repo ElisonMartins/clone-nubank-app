@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, FlatList, Dimensions } from 'react-native';
 import { AntDesign, Feather, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { Pix, BarChart, MonetizationOn, Send, AccountBalance, Description, AddCircleOutline } from '@mui/icons-material';
-import { Container, Box } from '@mui/material';
+//import { Container, Box } from '@mui/material';
 
 const windowWidth = Dimensions.get('window').width;
 
