@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, FlatList, Dimensions } from 'react-native';
-import { AntDesign, Feather, Ionicons, MaterialIcons } from '@expo/vector-icons'; // Importando ícones
+import { AntDesign, Feather, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Pix, BarChart, MonetizationOn, Send, AccountBalance, Description, AddCircleOutline } from '@mui/icons-material';
+import { Container, Box } from '@mui/material';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -115,13 +117,13 @@ const styles = StyleSheet.create({
 
 export default function App() {
   const data = [
-    { icon: 'heart', text: 'Área Pix' },
-    { icon: 'attach-money', text: 'Pagar' },
-    { icon: 'cart-outline', text: 'Pegar emprestado' },
-    { icon: 'gift', text: 'Transferir' },
-    { icon: 'star', text: 'Depositar' },
-    { icon: 'heart', text: 'extrato' },
-    { icon: 'attach-money', text: 'Novas funçoes' },
+    { icon: <Pix />, text: 'Área Pix' },
+    { icon: <BarChart />, text: 'Pagar' },
+    { icon: <MonetizationOn />, text: 'Pegar emprestado' },
+    { icon: <Send />, text: 'Transferir' },
+    { icon: <AccountBalance />, text: 'Depositar' },
+    { icon: <Description />, text: 'Extrato' },
+    { icon: <AddCircleOutline />, text: 'Novas funçoes' },
   ];
 
   const extraContent = [
@@ -148,25 +150,27 @@ export default function App() {
           <Text style={styles.infoText}>R$ 3.156,94</Text>
         </View>
         <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={data}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item }) => (
-            <View style={styles.circleContainer}>
-              <View style={styles.circle}>
-                <AntDesign name={item.icon} size={24} color="black" />
-              </View>
-              <Text style={styles.iconText}>{item.text}</Text>
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={data}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.circleContainer}>
+            <View style={styles.circle}>
+              {item.icon}
             </View>
-          )}
-          contentContainerStyle={styles.sliderContainer}
-          snapToInterval={windowWidth * 0.3 + 20} // Largura do item + margem
-          decelerationRate="fast"
-          getItemLayout={(data, index) => (
-            { length: windowWidth * 0.3 + 20, offset: (windowWidth * 0.3 + 20) * index, index }
-          )}
-        />
+            <Text style={styles.iconText}>{item.text}</Text>
+          </View>
+        )}
+        contentContainerStyle={styles.sliderContainer}
+        snapToInterval={windowWidth * 0.3 + 20}
+        decelerationRate="fast"
+        getItemLayout={(data, index) => ({
+          length: windowWidth * 0.3 + 20,
+          offset: (windowWidth * 0.3 + 20) * index,
+          index,
+        })}
+      />
         <View style={styles.sectionContainer}>
           <View style={styles.sectionTextContainer}>
             <Text style={styles.sectionTitle}>Meus cartões</Text>
